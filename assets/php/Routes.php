@@ -30,6 +30,9 @@ class Routes extends Bdd{
             case "Login":
                 $this->template->LoginForm();
                 break;
+            case "Register":
+                $this->template->RegisterForm();
+                break;
             default:
                 break;
         }

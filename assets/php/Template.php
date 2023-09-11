@@ -62,19 +62,51 @@ class Template{
 
     public function LoginForm(){ ?>
         <form action="" method="post" class="d-flex flex-column container-fluid col-10 col-sm-8 col-md-6 m-5">
-            <div class="form-group row">
-                <label for="Email" class="col-sm-2 col-form-label align-middle">Email</label>
-                <div class="col-sm-10">
+            <legend>Connexion</legend>
+            <div class="form-group row" style="width: 100%;">
+                <label for="Email" class="col-form-label align-middle">Email</label>
+                <div class="codl-sm-10">
                     <input type="email" class="form-control" name="Email" id="Email" placeholder="email@example.com">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="Password" class="col-sm-2 col-form-label align-middle">Mot de passe</label>
-                <div class="col-sm-10">
+            <div class="form-group row" style="width: 100%;">
+                <label for="Password" class="col-form-label align-middle">Mot de passe</label>
+                <div class="codl-sm-10">
                     <input type="password" class="form-control" name="Password" id="Password" placeholder="Votre mot de passe">
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+            <hr>
+            <div class="form-group row" style="width: 100%;">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Connexion</button>
+            </div>
+        </form>
+    <?php }
+
+    public function RegisterForm(){?>
+        <form action="" method="post" class="d-flex flex-column container-fluid col-10 col-sm-8 col-md-6 m-5">
+            <legend>Inscription</legend>
+            <div class="form-group row" style="width: 100%;">
+                <label for="Email" class="col-form-label align-middle">Email</label>
+                <div class="codl-sm-10">
+                    <input type="email" class="form-control" name="Email" id="Email" placeholder="email@example.com">
+                </div>
+            </div>
+            <div class="form-group row" style="width: 100%;">
+                <label for="Password" class="col-form-label align-middle">Mot de passe</label>
+                <div class="codl-sm-10">
+                    <input type="password" class="form-control" name="Password" id="Password" placeholder="Votre mot de passe">
+                </div>
+            </div>
+            <div class="form-group row" style="width: 100%;">
+                <label for="Password2" class="col-form-label align-middle">Mot de passe</label>
+                <div class="codl-sm-10">
+                    <input type="password2" class="form-control" name="Password2" id="Password2" placeholder="Repeter votre mot de passe">
+                </div>
+            </div>
+            <hr>
+            <div class="form-group row" style="width: 100%;">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Inscription</button>
+            </div>
         </form>
     <?php }
 }
