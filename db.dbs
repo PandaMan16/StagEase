@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MySql" id="Project-c80" database="MySql" >
+	<schema name="stagease" >
+		<table name="calendar" generator_rows="150" >
+			<column name="id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="entreprise" type="VARCHAR" length="100" jt="12" />
+			<column name="adresse" type="VARCHAR" length="255" jt="12" regexp="((APT|Appartment) [1-9][0-9]{0,2})|(Suite [1-9][0-9]{0,3})|((1st|2nd|3rd|[4-9]th|[1-9]{2,3}th) Floor)|((Sales|Customer|After Sales|Pre Sales|Post Sales) (Group|Department))|((Lincoln|Washington|Jefferson|Roosevelt|Hamilton|Franklin|Marshall|Edison|Wilson|Madison|Roosevelt|Truman|Einstein|Anthony|Sanger|Foster) Building)" />
+			<column name="code postal" type="VARCHAR" length="10" jt="12" regexp="[0-9]{5}" />
+			<column name="ville" type="VARCHAR" length="50" jt="12" regexp="list:file=USCity.txt" />
+			<column name="telephone" type="VARCHAR" length="11" jt="12" regexp="[0-9]{3}(-)[0-9]{3}(-)[0-9]{4}" />
+			<column name="date_start" type="DATETIME" jt="93" />
+			<column name="start_end" type="DATETIME" jt="93" />
+			<column name="id_user" type="INT" jt="4" />
+			<index name="pk_calendar" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="unq_calendar_id_user" unique="UNIQUE_KEY" >
+				<column name="id_user" />
+			</index>
+			<fk name="fk_calendar_calendar" to_schema="stagease" to_table="identifiant" >
+				<fk_column name="id_user" pk="id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="identifiant" generator_rows="100" >
+			<column name="id" type="INT" jt="4" mandatory="y" >
+				<identity><![CDATA[AUTO_INCREMENT]]></identity>
+			</column>
+			<column name="nom" type="VARCHAR" length="50" jt="12" regexp="list:file=NamesLast.txt" />
+			<column name="prenom" type="VARCHAR" length="50" jt="12" regexp="list:file=NamesFirst.txt" />
+			<column name="email" type="VARCHAR" length="255" jt="12" />
+			<column name="password" type="VARCHAR" length="255" jt="12" regexp="((John|Anne|Tony) (has free time|bought new car|is shopping|is walking). ){2,5}" />
+			<index name="pk_identifiant" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
+	<connector name="MySql" database="MySql" driver_class="com.mysql.cj.jdbc.NonRegisteringDriver" driver_jar="mysql-connector-j-8.0.32.jar" driver_desc="Standard" host="localhost" port="3306" instance="stagease" user="root" useSystemProxy="false" />
+	<layout name="Main Layout" id="Layout-a15" show_relation="columns" >
+		<entity schema="stagease" name="calendar" color="C1D8EE" x="48" y="144" />
+		<entity schema="stagease" name="identifiant" color="FF007F" x="304" y="144" />
+		<callout x="48" y="48" pointer="Round" >
+			<comment><![CDATA[This is a layout. Create new tables by right-clicking the layout. 
+
+Edit tables by double-clicking the table header.]]></comment>
+		</callout>
+		<query id="Query-18fe" name="calendar" confirmed="y" >
+			<query_table schema="stagease" name="calendar" alias="c" x="48" y="48" >
+				<column name="id" />
+				<column name="entreprise" />
+				<column name="adresse" />
+				<column name="code postal" />
+				<column name="ville" />
+				<column name="telephone" />
+				<column name="date_start" />
+				<column name="start_end" />
+			</query_table>
+		</query>
+	</layout>
+</project>

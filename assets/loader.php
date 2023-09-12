@@ -1,4 +1,8 @@
 <?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
 if(!isset($loaderisok)){
     spl_autoload_register(function ($class_name) {
         $class_path = __DIR__.'/php/'.$class_name . '.php';
