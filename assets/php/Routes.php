@@ -22,6 +22,7 @@ class Routes extends Bdd{
         $logg = "";
         if(isset($_SESSION['id'])){
             $this->user = new User($_SESSION['id']);
+            $planning = new Planning($_SESSION['id']);
         }
         if(isset($_GET['page'])){
             $this->urlName = $_GET['page'];
@@ -49,17 +50,20 @@ class Routes extends Bdd{
                     }
                 }
                 break;
+            case 'Planning/Add':
+                $result = $planning->addPlanning($_POST['f_date'],$_POST['f_start'],$_POST['f_end'],$_POST['f_name'],$_POST['f_entreprise'],$_POST['f_adresse'],$_POST['f_c_postal'],$_POST['f_ville'],$_POST['f_tel']);
+                $this->urlName = "Planning";
+                header("Location: /Planning");
+                break;
             case 'Accueil':
                 break;
-                default:
-                // $logg = "<script type='module'>import { panda } from 'https://pandatown.fr/lib/pandalib.js';panda.util.log('".$_POST["f_date"]."','orange')</script>";
+            default:
                 break;
         }
         $this->template = new Template($this);
         $this->template->header();
         $this->template->modal();
         $this->template->menu();
-        echo $logg;
         switch($this->urlName) {
             case "Login":
                 $this->template->LoginForm();

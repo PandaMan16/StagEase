@@ -148,7 +148,7 @@ class Template{
     public function loadplanning(){?>
         <!-- <button type="button" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal">Primary</button> -->
         <div class="container-fluid d-flex justify-content-center">
-            <div id="calendar" class="col-8 h-25"></div>
+            <div id="calendar" class="h-25"></div>
         </div>
     <?php }
 }
