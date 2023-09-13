@@ -23,7 +23,6 @@ class Routes extends Bdd{
         if(isset($_SESSION['id'])){
             $this->user = new User($_SESSION['id']);
         }
-        // $logg = "<script type='module'>import { panda } from 'https://pandatown.fr/lib/pandalib.js';panda.util.log(".json_encode($this).",'orange')</script>";
         if(isset($_GET['page'])){
             $this->urlName = $_GET['page'];
         }
@@ -52,8 +51,8 @@ class Routes extends Bdd{
                 break;
             case 'Accueil':
                 break;
-            default:
-                # code...
+                default:
+                // $logg = "<script type='module'>import { panda } from 'https://pandatown.fr/lib/pandalib.js';panda.util.log('".$_POST["f_date"]."','orange')</script>";
                 break;
         }
         $this->template = new Template($this);
